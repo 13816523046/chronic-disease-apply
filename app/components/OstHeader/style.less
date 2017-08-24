@@ -1,0 +1,40 @@
+.ost-header {
+  z-index: 11;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  font-size: 0.28rem;
+  background: -webkit-linear-gradient(90deg,#3CC2FF, #4C5AFC); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(90deg,#3CC2FF, #4C5AFC); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(90deg,#3CC2FF, #4C5AFC); /* Firefox 3.6 - 15 */
+  background: linear-gradient(90deg, #3CC2FF, #4C5AFC); /* 标准的语法 */
+  color: #fff;
+  .ost-header-left {
+    padding-left: 0.30rem;
+    font-size: 0.40rem;
+    background: url(./images/icon-left.png) no-repeat;
+    background-position: center;
+    background-size: 110%;
+    margin-left: 5vw;
+  }
+  .ost-header-center{
+    display: -webkit-flex;
+    display: flex;
+    .info-header-s{
+      margin-right: 0.40rem;
+    }
+    .info-header-hot{
+      border-bottom: 0.06rem solid #fff;
+      font-weight: bold;
+    }
+  }
+  .ost-header-right {
+    opacity: 0.5;
+    padding-right: 0.20rem;
+  }
+}

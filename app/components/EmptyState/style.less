@@ -1,0 +1,71 @@
+.empty-state-msg{
+    // font-family: PingFangSC-Semibold;
+    width: 100%;
+    font-size: 0.32rem;
+    color: #BABFC9;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-cont{/*定义为flexbox的父元素*/
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex-column{/*定义为flexbox的父元素 纵轴*/
+    width: 100%;
+    height: 100%;
+    padding-top: 30%;
+    background-color: #fff;
+    overflow: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction:column;
+    -webkitflex-direction:column;
+}
+.flex-item{/*给子元素自由伸缩的能力*/
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.flex-two{
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    flex: 2;
+}
+.flex-three{
+    -webkit-box-flex: 3;
+    -webkit-flex: 3;
+    flex: 3;
+}
+.flex-four{
+    -webkit-box-flex: 4;
+    -webkit-flex: 4;
+    flex: 4;
+}
+.flex-center{/*居中*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.48rem;
+    -webkit-align-items:center;
+    align-items: center;
+    -webkit-justify-content:center;
+    img{
+        width: 3.32rem;height: 3.32rem;
+    }
+}
+.flex-justify-center{
+    -webkit-align-items:flex-start;
+    align-items: flex-start;
+    -webkit-justify-content:center;
+    justify-content:center;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
