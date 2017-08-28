@@ -65,41 +65,47 @@ class Home extends Component {
         </div>
         <div className="main-form">
           <List style={{ backgroundColor: 'white' }} className="picker-list">
+            <div className="form-item-single">
+              <Picker
+                data={this.state.data}
+                cols={this.state.cols}
+                value={this.state.asyncValue}
+                onPickerChange={this.onPickerChange}
+              >
+                <List.Item arrow="down" onClick={()=>{}}>所在地区</List.Item>
+              </Picker>
+            </div>
+            <div className="form-item-single">
+              <Picker
+                data={this.state.data}
+                cols={this.state.cols}
+                value={this.state.asyncValue}
+                onPickerChange={this.onPickerChange}
+              >
+                <List.Item arrow="down" onClick={()=>{}}>所在街道</List.Item>
+              </Picker>
+            </div>
 
-            <Picker
-              data={this.state.data}
-              cols={this.state.cols}
-              value={this.state.asyncValue}
-              onPickerChange={this.onPickerChange}
-            >
-              <List.Item arrow="down" onClick={()=>{}}>所在地区</List.Item>
-            </Picker>
 
-            <Picker
-              data={this.state.data}
-              cols={this.state.cols}
-              value={this.state.asyncValue}
-              onPickerChange={this.onPickerChange}
-            >
-              <List.Item arrow="down" onClick={()=>{}}>所在街道</List.Item>
-            </Picker>
-
-            <div className="form-item">详细地址</div>
-            <TextareaItem
-              className="form-text"
-              rows={3}
-              placeholder="请输入"
-              maxLength={100}
-              onChange={(val) => {console.log(val);}}
-           />
-
-           <InputItem
-            className="form-input"
-            type="phone"
-            maxLength={11}
-            placeholder="请输入"
-            >联系电话</InputItem>
-
+            <div className="form-item-more">
+              <div className="form-item">详细地址</div>
+              <TextareaItem
+                className="form-text"
+                rows={3}
+                placeholder="请输入"
+                maxLength={100}
+                onChange={(val) => {console.log(val);}}
+             />
+             <span className="form-item-text">100字</span>
+            </div>
+            <div className="form-item-single">
+              <InputItem
+                className="form-input"
+                type="phone"
+                maxLength={11}
+                placeholder="请输入"
+              >联系电话</InputItem>
+            </div>
             <div className="form-check">
               <div className="form-check-name">申报类型</div>
               <div className="form-check-box"><span id={0}>个人</span><span className={'active'} id={0}>单位</span></div>
@@ -108,7 +114,7 @@ class Home extends Component {
             <div className="form-item">单位名称</div>
             <TextareaItem
               className="form-text"
-              rows={3}
+              rows={5}
               placeholder="请输入"
               onChange={(val) => {console.log(val);}}
            />

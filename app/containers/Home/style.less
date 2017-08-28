@@ -11,7 +11,6 @@
   .main-info {
     display: flex;
     width: 100%;
-    height: 3.0rem;
     margin-top: 0.88rem;
     flex-direction: column;
     -webkit-flex-direction: column;
@@ -25,21 +24,30 @@
       font-size: 0.4rem;
       letter-spacing: 0;
     }
-    .col2 {
-      font-size: 0.28rem;
+    .col2, .col3 {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
       padding-left: 0.4rem;
-      padding-bottom: 0.2rem;
+
+      font-size: 0.28rem;
+      span {
+        display: block;
+        font-size: 0.28rem;
+      }
       .left {
         margin-right: 0.5rem;
       }
     }
-    .col3 {
-      font-size: 0.28rem;
-      padding-left: 0.4rem;
-      .left {
-        margin-right: 0.23rem;
-      }
+    .col2 .left {
+      margin-right: 0.5rem;
+      margin-bottom: .3rem;
     }
+    .col3 .left {
+      margin-right: 0.23rem;
+      margin-bottom: .4rem;
+    }
+
   }
   /* form表单 */
   .main-form {
@@ -53,6 +61,14 @@
       height: 0.32rem;
       line-height: 0.32rem;
       padding-left: 0.4rem;
+    }
+    /* 100字 */
+    .form-item-text {
+      position: absolute; bottom: .4rem; right: 0;
+      height: 0.32rem;
+      width: 1.2rem;
+      color: #BABFC9;
+      font-size: .24rem;
     }
     .form-text {
       padding-left: 0.4rem;
@@ -89,20 +105,30 @@
           line-height: 0.32rem;
           color: #949A9F;
           font-size: 0.28rem;
-          border-radius: 0.2rem;
+          border-radius: 0.4rem;
           border: 1px solid rgba(0,0,0,0.10);
         }
         span.active {
           background: rgba(255,102,63,0.05);
-          border: 1 solid #FF783F;
-          border-radius: 0.2rem;
+          border: 1px solid #FF783F;
+          border-radius: 0.4rem;
           color: #FF783F;
         }
       }
 
     }
   }
+  .form-item-single {
+    border: 0;
+    .am-list-item {
+      height: 0.88rem;
+    }
+  }
+  .form-item-more {
+    border: 0;
+    position: relative;
 
+  }
 }
 
 
@@ -119,17 +145,46 @@
     border: 0;
     color: #fff;
     font-size: 0.32rem;
+    height: .94rem;
+    line-height: .94rem;
   }
 }
 .am-list {
   .am-list-body {
     color: #333333;
+    .am-list-item {
+      padding-left: 0;
+      textarea {
+        padding-left: .4rem;
+        font-size: 0.32rem;
+        line-height: .51rem;
+      }
+      .am-list-line {
+        border: 0;
+      }
+    }
     .am-list-content {
-      padding-left: 0.1rem;
+      padding-left: 0.4rem;
       font-size: 0.32rem;
+    }
+    .am-input-label {
+      width: 2.0rem;
+      padding-left: .4rem;
+    }
+    .am-input-control {
+      input {font-size: 0.32rem; }
     }
     .am-list-extra {
       font-size: 0.32rem;
+    }
+    .am-textarea-item {
+      border: 0;
+      min-height: .88rem;
+      padding-right: .3rem;
+    }
+    .am-textarea-control {
+      padding-top: .23rem;
+      padding-bottom: .21rem;
     }
   }
 }
@@ -137,5 +192,12 @@
 .am-picker {
   .am-picker-col-item {
     font-size: 0.32rem;
+  }
+}
+.am-picker-popup-body {
+  .am-picker-popup-body, .am-picker-popup-item {
+    font-size: .34rem;
+    padding: .18rem .30rem;
+    height: .84rem;
   }
 }
