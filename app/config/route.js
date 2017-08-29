@@ -5,6 +5,7 @@ import App from '../containers/App'
 import Main from '../containers/Main/index'
 import Home from '../containers/Home'
 import Apply from '../containers/Apply'
+import ApplyPhotoUpdate from '../containers/ApplyPhotoUpdate'
 
 const config = [
   {
@@ -18,6 +19,7 @@ const config = [
       { path: '/home', name: 'home', component: Home },
       { path: '/main', name: 'main', component: Main },
       { path: '/apply', name: 'apply', component: Apply},
+      { path: '/photo', name: 'photo', component: ApplyPhotoUpdate },
     ]
    },
 ]
