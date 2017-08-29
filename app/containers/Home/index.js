@@ -44,12 +44,10 @@ class Home extends Component {
     this.setState({
       asyncValue: val
     })
-
-
   }
 
   render() {
-    const { header } = this.props
+    const { header, router } = this.props
 
     return (
       <div className="main">
@@ -122,7 +120,7 @@ class Home extends Component {
         </div>
 
         <div className="main-btn">
-          <Button className="btn">下一步</Button>
+          <Button onClick={() => { router.push('apply')}} className="btn">下一步</Button>
         </div>
       </div>
     )
