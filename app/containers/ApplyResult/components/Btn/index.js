@@ -3,7 +3,7 @@ import "./style.less"
 /**
  * Btn Stateless Component
  */
-const OstBtn = ({title, handler}) => {
+const Btn = ({title, handler}) => {
 
   const clickHandler = () => {
     console.log("未绑定点击事件")
@@ -16,4 +16,4 @@ const OstBtn = ({title, handler}) => {
   )
 }
 
-export default OstBtn
+export default Btn

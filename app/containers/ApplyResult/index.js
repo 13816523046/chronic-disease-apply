@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Connect } from './connect'
 import OstHeader from '../../components/OstHeader'
-import OstBtn from './components/OstBtn/index.js'
-import OstProIcon from './components/OstProIcon/index.js'
-import OstLi from './components/OstLi/index.js'
+import Btn from './components/Btn/index.js'
+import ProIcon from './components/ProIcon/index.js'
+import Linew from './components/Linew/index.js'
 import './style.less'
+
+import configureStore from '../../config/store.js';
 
 /**
  * 容器组件 —— 慢病申请进度页
@@ -24,16 +26,57 @@ class ApplyResult extends Component{
     }
   }
 
+  componentDidMount() {
+    const { Actions } = this.props
+    Actions.Add_Final_Adoption()
+  }
+
   render() {
     const header = this.header;
+    const {applyStateReducer} = this.props;
+    const {title} = applyStateReducer
     return(
       <div className="apply-result" >
         <OstHeader title={header.title} back={header.back} option={header.option} />
         <div style={{height:"0.88rem"}}></div>
-        <ApplyState />
+        <ApplyState applyStateReducer={applyStateReducer} />
         <ApplyProIcon />
         <ApplyError />
         <ApplyTip />
+      </div>
+    )
+  }
+}
+
+/**
+ * 组件 —— 慢病申请头部状态 
+ */
+class ApplyState extends Component{
+  constructor(props) {
+    super(props);
+    this.state = { };
+    this.btn ={
+      title:"去修改",
+      handler:()=>{
+        console.warn("傻孩子要去修改")
+      }
+    }
+  }
+
+  render(){
+    const btn = this.btn;
+    let { applyStateReducer } = this.props;
+    let { showBtnEdit } = applyStateReducer;
+    let styleShow = showBtnEdit ? "static" :"none"
+    return (
+      <div className="apply-state">
+        <div className="text">
+          <span>申请进度</span>
+          <span className="state">{applyStateReducer.title}</span>
+        </div>
+        <div className="btn" style={{display:styleShow}}>
+          <Btn className="btn-self" title={btn.title} handler={btn.handler} />
+        </div>
       </div>
     )
   }
@@ -47,10 +90,10 @@ class ApplyProIcon extends Component{
     super(props);
     this.state = {};
     this.applyProgress = [
-      { imgType:1,title:"初审",key:1},
-      { imgType:1,title:"复审",key:2},
-      { imgType:1,title:"递交材料",key:3},
-      { imgType:1,title:"申请成功",key:4}
+      { imgType:3,title:"初审",key:1,showLeftLine:false,showRightLine:true},
+      { imgType:2,title:"复审",key:2,showLeftLine:true,showRightLine:true},
+      { imgType:1,title:"递交材料",key:3,showLeftLine:true,showRightLine:true},
+      { imgType:0,title:"申请成功",key:4,showLeftLine:true,showRightLine:false}
     ]
   }
 
@@ -60,40 +103,10 @@ class ApplyProIcon extends Component{
         {
           this.applyProgress.map((progress)=>{
             return (
-              <OstProIcon msg={progress.title} key={progress.key} />
+              <ProIcon msg={progress.title} progress={progress} key={progress.key} />
             )
           })
         }
-      </div>
-    )
-  }
-}
-/**
- * 组件 —— 慢病申请头部状态 
- */
-class ApplyState extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.ostBtn ={
-      title:"去修改",
-      handler:()=>{
-        console.warn("傻孩子要去修改")
-      }
-    }
-  }
-
-  render(){
-    const ostBtn = this.ostBtn;
-    return (
-      <div className="apply-state">
-        <div className="text">
-          <span>申请进度</span>
-          <span className="state">初审失败</span>
-        </div>
-        <div className="btn">
-          <OstBtn className="btn-self" title={ostBtn.title} handler={ostBtn.handler} />
-        </div>
       </div>
     )
   }
@@ -112,10 +125,10 @@ class ApplyError extends Component{
       <div className="apply-error">
         <div className="header">初审失败原因</div>
         <div className="contant">
-          <OstLi className="ost-li" title="小子"/>
-          <OstLi className="ost-li" title="大王"/>
-          <OstLi className="ost-li" title="女王"/>
-          <OstLi className="ost-li" />
+          <Linew className="ost-li" type="1" title="小子"/>
+          <Linew className="ost-li" type="1" title="大王"/>
+          <Linew className="ost-li" type="1" title="女王"/>
+          <Linew className="ost-li" type="1" />
         </div>
       </div>
     )
@@ -138,14 +151,14 @@ class ApplyTip extends Component{
           <div className="line"></div>
         </header>
         <div className="contant">
-          <OstLi title="复审通过后，您可携带以下材料前往人社大厅办理" />
-          <OstLi title="1.身份证正反面复印件" />
-          <OstLi title="2.医疗保险慢性病鉴定审批表" />
-          <OstLi title="3.彩色1寸证件照（一张）" />
-          <OstLi title="4.社会保障卡复印件" />
-          <OstLi title="5.诊断说明书" />
-          <OstLi title="6.门诊病历复印件" />
-          <OstLi title="7.住院病历复印件" />
+          <Linew className="ost-li" title="复审通过后，您可携带以下材料前往人社大厅办理" />
+          <Linew className="ost-li" title="1.身份证正反面复印件" />
+          <Linew className="ost-li" title="2.医疗保险慢性病鉴定审批表" />
+          <Linew className="ost-li" title="3.彩色1寸证件照（一张）" />
+          <Linew className="ost-li" title="4.社会保障卡复印件" />
+          <Linew className="ost-li" title="5.诊断说明书" />
+          <Linew className="ost-li" title="6.门诊病历复印件" />
+          <Linew className="ost-li" title="7.住院病历复印件" />
         </div>
       </div>
     )

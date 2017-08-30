@@ -10,14 +10,14 @@ export const Failure_Of_First_Instance = 'Failure_Of_First_Instance';//初审失
  * action 创建函数
  */
 
-export function Final_Adoption() {
+export function Add_Final_Adoption() {
   	return { type: Final_Adoption }
 }
 
-export function In_Review() {
+export function Add_In_Review() {
   	return { type: In_Review }
 }
 
-export function Failure_Of_First_Instance() {
+export function Add_Failure_Of_First_Instance() {
   	return { type: Failure_Of_First_Instance }
 }
