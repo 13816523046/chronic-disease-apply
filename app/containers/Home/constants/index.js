@@ -1,4 +1,2 @@
-// 开始请求数据列表
-export const START_REQUEST_LISTVIEW = 'START_REQUEST_LISTVIEW'
-// 结束请求数据列表
-export const END_REQUEST_LISTVIEW = 'END_REQUEST_LISTVIEW'
+// 控制选择是否隐藏
+export const SELECT_APPLY_TYPE = 'SELECT_APPLY_TYPE'

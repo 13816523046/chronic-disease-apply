@@ -4,13 +4,13 @@ import './style.less'
 /**
  * Header Stateless Component
  */
-const OstHeader = ({title, back, option}) => {
-
+const OstHeader = ({title, back, option, color}) => {
+  color = color || ''
   const backHandler = () => {
       history.back()
   }
 
-  return <div className="ost-header">
+  return <div className={"ost-header" + color}>
       <div className="ost-header-left" onClick={back || backHandler}>
         <i></i>
       </div>
