@@ -23,7 +23,7 @@ const config = [
       { path: '/main', name: 'main', component: Main },
       { path: '/apply', name: 'apply', component: Apply},
       { path: '/photo', name: 'photo', component: ApplyPhotoUpdate },
-      { path: '/applyResult', name: 'applyResult', component: ApplyResult }
+      { path: '/applyResult', name: 'applyResult', component: ApplyResult },
       { path: '/list', name: 'list', component: List},
 
     ]
