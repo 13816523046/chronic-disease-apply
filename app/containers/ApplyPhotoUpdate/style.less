@@ -13,6 +13,9 @@
         float: right;
     }
     .update-box{
+        .update-photo{
+            padding-right: 0.14rem;
+        }
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -34,13 +37,13 @@
             width: 100%;
             height: auto;
             flex-direction: column;
-            padding: 0.14rem;
             .update-text{
                 width: 100%;
                 height: 0.88rem;
                 line-height: 0.88rem;
                 font-size: 0.32rem;
                 color: #333;
+                padding-left: 0.14rem;
                 .text-right{
                     color: #3C6BF0;
                 }
@@ -50,23 +53,59 @@
             width: 100%;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            justify-content: flex-start;
+            align-items: flex-start;
             .photo-item{
-
-                .close{
-
-                }
+                width: 25%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 .picItem{
-                    padding: 0.075rem 0.05rem 0.38rem 0;
+                    position: relative;
+                    width: 100%;
+                    padding: 0 0 0 0.14rem;
                     text-align: center;
+                    line-height: 0.4rem;
+                    color: #fff;
                     img{
-                        width: 0.6rem;
-                        height: 0.52rem;
+                        width: 100%;
+                        height: auto;
+                    }
+                    .close{
+                        position: absolute;
+                        top: 0rem;
+                        right: 0rem;
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        border-radius: 50%;
+                        background-color: #FF783F;
+                    }
+                    .before{
+                        position: absolute;
+                        top: 30%;
+                        left: 35%;
+                        font-size: 0.24rem;
                     }
                 }
                 .instruces{
-
+                    text-align: center;
+                    font-size: 0.22rem;
+                    color: #90949E;
                 }
             }
         }
+        .line{
+            width: 96%;
+            margin: 0 auto;
+            border-bottom: 0.02rem solid rgba(0,0,0,0.10);
+            margin-top: 0.3rem;
+        }
+    }
+    .submitBtn{
+        width: 100%;
+        height: 0.88rem;
     }
   }
