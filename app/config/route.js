@@ -25,7 +25,6 @@ const config = [
       { path: '/photo', name: 'photo', component: ApplyPhotoUpdate },
       { path: '/applyResult', name: 'applyResult', component: ApplyResult },
       { path: '/list', name: 'list', component: List},
-
     ]
    },
 ]

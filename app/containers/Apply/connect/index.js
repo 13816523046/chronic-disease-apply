@@ -11,7 +11,7 @@ export const Connect = (Container) => {
 
   // redux ‘s state 非 react state
   function mapStateToProps(state) {
-    const { homeReducer } = state
+    const { applyReducer } = state
     return {
       // diArr: homeReducer.diArr,
       // igArr: homeReducer.igArr,

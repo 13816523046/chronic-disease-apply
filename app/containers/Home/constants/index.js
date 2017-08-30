@@ -1,2 +1,10 @@
 // 控制选择是否隐藏
 export const SELECT_APPLY_TYPE = 'SELECT_APPLY_TYPE'
+
+export const CHANGE_ADDR_VAL = 'CHANGE_ADDR_VAL'
+
+export const CHANGE_PICKER_VAL = 'CHANGE_PICKER_VAL'
+
+export const CHANGE_TEL_VAL = 'CHANGE_TEL_VAL'
+
+export const CHANGE_COMPANY_VAL = 'CHANGE_COMPANY_VAL'

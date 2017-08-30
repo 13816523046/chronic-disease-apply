@@ -9,7 +9,10 @@ class Apply extends Component {
   static defaultProps = {
     header: {
       title: '慢病资格申请',
-      back: () => history.back(),
+      back: () => {
+        console.log(this);
+        // history.back()
+      },
       option: {
         text: '',
         handler: () => {},
@@ -22,12 +25,16 @@ class Apply extends Component {
   }
 
   render() {
-    const { header, router } = this.props
+    const { header, router, Actions } = this.props
     return (
       <div className="main">
         <OstHeader
           title={header.title}
-          back={header.back}
+          back={() => {
+              Actions.transRight()
+              router.push('home')
+            }
+          }
           option={header.option}>
         </OstHeader>
 
@@ -66,7 +73,7 @@ class Apply extends Component {
               <span>肝硬化<i>x</i></span>
               <span>肝硬化<i>x</i></span>
             </div>
-            
+
           </div>
 
         </div>

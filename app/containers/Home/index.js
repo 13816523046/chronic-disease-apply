@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Connect } from './connect'
 import OstHeader from '../../components/OstHeader'
+import TypeButton from './components/TypeButton'
 import './style.less'
 import { Button, Picker, List, TextareaItem, InputItem } from 'antd-mobile'
 
@@ -18,39 +19,18 @@ class Home extends Component {
     }
   }
 
-  state = {
-    data: [{
-      label: '请选择',
-      value: '',
-    },{
-      label: 'key1',
-      value: 'val1',
-    },{
-      label: 'key2',
-      value: 'val2',
-    }],
-    cols: 1, // 1列
-    pickerValue: [],
-    asyncValue: [],
-  }
-
   constructor(props) {
     super(props)
 
-    this.onPickerChange = this.onPickerChange.bind(this)
     this.selectTypeHandler = this.selectTypeHandler.bind(this)
     this.submitFormHandler = this.submitFormHandler.bind(this)
-  }
-
-  onPickerChange(val) {
-    console.log(val);
-    this.setState({
-      asyncValue: val
-    })
+    this.changeAddrHandler = this.changeAddrHandler.bind(this)
+    this.changePickerHandler = this.changePickerHandler.bind(this)
+    this.chageTelHandler = this.chageTelHandler.bind(this)
+    this.changeCompanyHandler = this.changeCompanyHandler.bind(this)
   }
 
   selectTypeHandler(type) {
-console.log('applyType::: ', applyType);
     const { Actions } = this.props
     const { applyType, isActive } = this.props.homeReducer
     if (type !== applyType) {
@@ -58,14 +38,38 @@ console.log('applyType::: ', applyType);
     }
   }
 
-  submitFormHandler() {
+  chageTelHandler(tel) {
+    const { Actions } = this.props
+    Actions.changeTel(tel)
+  }
 
+  changeAddrHandler(addr) {
+    const { Actions } = this.props
+    Actions.changeAddr(addr)
+  }
+
+  changePickerHandler(val) {
+    const { Actions } = this.props
+    Actions.changePicker(val)
+  }
+
+  changeCompanyHandler(val) {
+    const { Actions } = this.props
+    Actions.changeCompany(val)
+  }
+
+  submitFormHandler() {
+    const { Actions, router } = this.props
+    // some request
+
+    Actions.transLeft();
+    router.push('apply')
   }
 
   render() {
     const { header, router } = this.props
-    const { applyType, isActive } = this.props.homeReducer
-console.log(this.props);
+    const { userInfo, applyType, isActive, picker } = this.props.homeReducer
+
     return (
       <div className="main">
         <OstHeader
@@ -75,32 +79,21 @@ console.log(this.props);
         </OstHeader>
         <div className="main-info">
           <div className="col1">参保人信息</div>
-          <div className="col2"><span className="left">王小明</span><span className="right">男&nbsp;&nbsp;18岁</span></div>
-          <div className="col3"><span className="left">身份证号</span><span className="right">370**** **** **** *27</span></div>
+          <div className="col2"><span className="left">{userInfo.name}</span><span className="right">{userInfo.sex}&nbsp;&nbsp;{userInfo.age}</span></div>
+          <div className="col3"><span className="left">身份证号</span><span className="right">{userInfo.idCard}</span></div>
         </div>
         <div className="main-form">
           <List style={{ backgroundColor: 'white' }} className="picker-list">
             <div className="form-item-single">
               <Picker
-                data={this.state.data}
-                cols={this.state.cols}
-                value={this.state.asyncValue}
-                onPickerChange={this.onPickerChange}
+                data={picker.data}
+                cols={picker.cols}
+                value={picker.asyncValue}
+                onPickerChange={this.changePickerHandler}
               >
                 <List.Item arrow="down" onClick={()=>{}}>所在地区</List.Item>
               </Picker>
             </div>
-            <div className="form-item-single">
-              <Picker
-                data={this.state.data}
-                cols={this.state.cols}
-                value={this.state.asyncValue}
-                onPickerChange={this.onPickerChange}
-              >
-                <List.Item arrow="down" onClick={()=>{}}>所在街道</List.Item>
-              </Picker>
-            </div>
-
             <div className="form-item-more">
               <div className="form-item">详细地址</div>
               <TextareaItem
@@ -108,7 +101,7 @@ console.log(this.props);
                 rows={3}
                 placeholder="请输入"
                 maxLength={100}
-                onChange={(val) => {console.log(val);}}
+                onChange={this.changeAddrHandler}
              />
              <span className="form-item-text">100字</span>
             </div>
@@ -118,6 +111,7 @@ console.log(this.props);
                 type="phone"
                 maxLength={11}
                 placeholder="请输入"
+                onChange={this.chageTelHandler}
               >联系电话</InputItem>
             </div>
             <div className="form-check">
@@ -134,32 +128,22 @@ console.log(this.props);
                   className="form-text"
                   rows={5}
                   placeholder="请输入"
-                  onChange={(val) => {console.log(val);}}
+                  onChange={this.changeCompanyHandler}
                 />
                 </div>
               )
             }
-
-
           </List>
         </div>
 
         <div className="main-btn">
-          <Button onClick={() => { router.push('apply')}} className="btn">下一步</Button>
+          <Button onClick={this.submitFormHandler} className="btn">下一步</Button>
         </div>
       </div>
     )
   }
 }
 
-const TypeButton = ({handler, text, isActive}) => {
-  console.log('isActive', isActive, text);
-  if (isActive) {
-    return <span className={'active'} onClick={handler}>{text}</span>
-  } else {
-    return <span onClick={handler}>{text}</span>
-  }
-}
 
 
 export default Connect(Home)

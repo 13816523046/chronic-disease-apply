@@ -2,6 +2,10 @@
 import request from '../../../utils/request'
 import {
   SELECT_APPLY_TYPE,
+  CHANGE_ADDR_VAL,
+  CHANGE_PICKER_VAL,
+  CHANGE_TEL_VAL,
+  CHANGE_COMPANY_VAL,
 } from '../constants';
 
 export function selectApplyType(applyType, isActive) {
@@ -9,6 +13,34 @@ export function selectApplyType(applyType, isActive) {
     type: SELECT_APPLY_TYPE,
     applyType,
     isActive,
+  }
+}
+
+export function changeAddr(addr) {
+  return {
+    type: CHANGE_ADDR_VAL,
+    addr
+  }
+}
+
+export function changePicker(asyncValue) {
+  return {
+    type: CHANGE_PICKER_VAL,
+    asyncValue,
+  }
+}
+
+export function changeTel(tel) {
+  return {
+    type: CHANGE_TEL_VAL,
+    tel,
+  }
+}
+
+export function changeCompany(company) {
+  return {
+    type: CHANGE_COMPANY_VAL,
+    company,
   }
 }
 console.log('request:::', request);

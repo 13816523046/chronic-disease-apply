@@ -26,7 +26,7 @@ const initialState = {
   isFetching: false,
 }; // 可以是Number 或者字符串 或对象
 
-const homeReducer = (state = initialState, action) => {
+const applyReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_REQUEST_LISTVIEW:
       return Object.assign({}, state, {
