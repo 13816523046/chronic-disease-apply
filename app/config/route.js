@@ -7,6 +7,7 @@ import Apply from '../containers/Apply'
 import ApplyPhotoUpdate from '../containers/ApplyPhotoUpdate'
 import ApplyResult from '../containers/ApplyResult/index.js'
 import List from '../containers/List'
+import ApplyOnwer from '../containers/ApplyOnwer/index.js'
 
 
 const config = [
@@ -23,6 +24,7 @@ const config = [
       { path: '/photo', name: 'photo', component: ApplyPhotoUpdate },
       { path: '/applyResult', name: 'applyResult', component: ApplyResult },
       { path: '/list', name: 'list', component: List},
+      { path: '/applyOnwer', name: 'applyOnwer', component: ApplyOnwer},
     ]
    },
 ]

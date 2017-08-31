@@ -8,8 +8,6 @@ import Linew from './components/Linew/index.js'
 import BtnAppleNew from './components/BtnAppleNew/index.js'
 import './style.less'
 
-import configureStore from '../../config/store.js';
-
 /**
  * 容器组件 —— 慢病申请进度页
  */
@@ -24,7 +22,9 @@ class ApplyResult extends Component{
       option: {
         text: '我的申请',
         handler: () => {
-          console.log("准备去找老大")
+          const { Actions, router } = this.props
+          Actions.transLeft();
+          router.push('applyOnwer')
         },
       },
     }
@@ -166,6 +166,7 @@ class ApplyError extends Component{
     }
   }
 }
+
 /**
  * 组件 —— 已申请病种
  */
