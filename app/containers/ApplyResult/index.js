@@ -27,8 +27,7 @@ class ApplyResult extends Component{
   }
 
   componentDidMount() {
-    const { Actions } = this.props
-    Actions.Add_Final_Adoption()
+    
   }
 
   render() {
@@ -37,12 +36,12 @@ class ApplyResult extends Component{
     const {title} = applyStateReducer
     return(
       <div className="apply-result" >
-        <OstHeader title={header.title} back={header.back} option={header.option} />
+        <OstHeader title={header.title} back={header.back} color="-white" option={header.option} />
         <div style={{height:"0.88rem"}}></div>
         <ApplyState applyStateReducer={applyStateReducer} />
-        <ApplyProIcon />
+        <ApplyProIcon applyStateReducer={applyStateReducer} />
         <ApplyError />
-        <ApplyTip />
+        <ApplyTip Actions={this.props.Actions} />
       </div>
     )
   }
@@ -65,7 +64,7 @@ class ApplyState extends Component{
 
   render(){
     const btn = this.btn;
-    let { applyStateReducer } = this.props;
+    const { applyStateReducer } = this.props;
     let { showBtnEdit } = applyStateReducer;
     let styleShow = showBtnEdit ? "static" :"none"
     return (
@@ -89,19 +88,15 @@ class ApplyProIcon extends Component{
   constructor(props) {
     super(props);
     this.state = {};
-    this.applyProgress = [
-      { imgType:3,title:"初审",key:1,showLeftLine:false,showRightLine:true},
-      { imgType:2,title:"复审",key:2,showLeftLine:true,showRightLine:true},
-      { imgType:1,title:"递交材料",key:3,showLeftLine:true,showRightLine:true},
-      { imgType:0,title:"申请成功",key:4,showLeftLine:true,showRightLine:false}
-    ]
   }
 
   render() {
+    const { applyStateReducer } = this.props;
+    const applyProgress = applyStateReducer.progress
     return(
       <div className="apply-pro-icon">
         {
-          this.applyProgress.map((progress)=>{
+          applyProgress.map((progress)=>{
             return (
               <ProIcon msg={progress.title} progress={progress} key={progress.key} />
             )
@@ -142,6 +137,31 @@ class ApplyTip extends Component{
     super(props);
     this.state={};
   }
+  test = (progress) => {
+    const { Actions } = this.props
+    switch(progress){
+      case 1:
+        Actions.Add_Final_Adoption()
+        console.log("终审通过");return;
+      case 2:
+        Actions.Add_In_First_Instance()
+        console.log("初审中");return;
+      case 3:
+        Actions.Add_In_Review()
+        console.log("复审中");return;
+      case 4:
+        Actions.Add_Submit_Materials()
+        console.log("递交材料");return;
+      case 5:
+        Actions.Add_Failure_Of_First_Instance()
+        console.log("初审失败");return;
+      case 6:
+        Actions.Add_Failure_Of_In_Review()
+        console.log("复审失败");return;
+      default:
+        console.log("没了，还点。。。")
+    }
+  }
   render() {
     return(
       <div className="apply-tip">
@@ -150,15 +170,15 @@ class ApplyTip extends Component{
           <span>温馨提示</span>
           <div className="line"></div>
         </header>
-        <div className="contant">
+        <div className="contant" >
           <Linew className="ost-li" title="复审通过后，您可携带以下材料前往人社大厅办理" />
-          <Linew className="ost-li" title="1.身份证正反面复印件" />
-          <Linew className="ost-li" title="2.医疗保险慢性病鉴定审批表" />
-          <Linew className="ost-li" title="3.彩色1寸证件照（一张）" />
-          <Linew className="ost-li" title="4.社会保障卡复印件" />
-          <Linew className="ost-li" title="5.诊断说明书" />
-          <Linew className="ost-li" title="6.门诊病历复印件" />
-          <Linew className="ost-li" title="7.住院病历复印件" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,1)} title="1.身份证正反面复印件" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,2)} title="2.医疗保险慢性病鉴定审批表" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,3)} title="3.彩色1寸证件照（一张）" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,4)} title="4.社会保障卡复印件" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,5)} title="5.诊断说明书" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,6)} title="6.门诊病历复印件" />
+          <Linew className="ost-li" onClicks={this.test.bind(this,7)} title="7.住院病历复印件" />
         </div>
       </div>
     )
