@@ -5,7 +5,7 @@ import '../3rd/seed'
 
 const currEnv = env.split(';')[0];
 const currHost = env.split(';')[1];
-const isNative = true;//window.App; // naitve flag
+const isNative = false;//window.App; // naitve flag
 
 /**
  * 为Promise扩充done 总是处于回调链最底端 保证抛出任何可能出现的异常

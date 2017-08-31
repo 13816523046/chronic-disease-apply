@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Connect } from './connect'
 import OstHeader from '../../components/OstHeader'
+import OstLoading from '../../components/OstLoading/index.js'
 import Btn from './components/Btn/index.js'
 import ProIcon from './components/ProIcon/index.js'
 import Linew from './components/Linew/index.js'
@@ -27,16 +28,30 @@ class ApplyResult extends Component{
         },
       },
     }
+    
   }
 
   componentDidMount() {
-    
+    const {Actions} = this.props;
+    Actions.fetchPosts()
   }
   test=()=>{
     const {Actions} = this.props;
     Actions.Add_In_First_Instance()
   }
+  toggleLoading = ()=>{
+    const { requestReducer } = this.props;
+    const { isFetching,val } = requestReducer;
+    if(isFetching){
+      this.loadingDom = (
+        <OstLoading title="加载中" />
+      )
+    }else{
+      this.loadingDom = null;
+    }
+  }
   render() {
+    this.toggleLoading();
     const header = this.header;
     const {applyStateReducer} = this.props;
     const {title,showBtnApplyNew,showDomError,showDomTip,showDomApplied} = applyStateReducer
@@ -49,11 +64,13 @@ class ApplyResult extends Component{
         <ApplyProIcon applyStateReducer={applyStateReducer} />
         <div className="flex-item">  
           <ApplyError showDomError={showDomError} />
+          <Applied showDomApplied={showDomApplied} />
         </div>
         <ApplyTip showDomTip={showDomTip} Actions={this.props.Actions} />
         <div style={{display:styleBtnApplyNew}} onClick={this.test} >
           <BtnAppleNew  />
         </div>
+        { this.loadingDom }
       </div>
     )
   }
@@ -148,6 +165,36 @@ class ApplyError extends Component{
       )
     }
   }
+}
+/**
+ * 组件 —— 已申请病种
+ */
+class Applied extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const { showDomApplied } = this.props;
+    if(showDomApplied){
+      return (
+        <div className="applied">
+          <div className="header">已申请病种</div>
+          <div className="contant">
+            <Linew className="ost-li" title="傻子"/>
+            <Linew className="ost-li" title="笨蛋"/>
+            <Linew className="ost-li" title="混子"/>
+            <Linew className="ost-li" />
+          </div>
+        </div>
+      )
+    }else{
+      return(
+        <div className="applied"></div>
+      )
+    }
+  } 
 }
 /**
  * 组件 —— 慢病申请温馨提示

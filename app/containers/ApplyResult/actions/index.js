@@ -1,5 +1,5 @@
 /*
- * action 类型
+ * action  进度状态
  */
 
 export const Final_Adoption = 'Final_Adoption';//终审通过
