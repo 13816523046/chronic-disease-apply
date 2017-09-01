@@ -22,6 +22,7 @@ class List extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { header, router, Actions } = this.props
     return (
       <div className="main">
