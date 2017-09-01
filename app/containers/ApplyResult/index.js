@@ -60,7 +60,7 @@ class ApplyResult extends Component{
       <div className="apply-result" >
         <OstHeader title={header.title} back={header.back} color="-white" option={header.option} />
         <div style={{height:"0.88rem"}}></div>
-        <ApplyState applyStateReducer={applyStateReducer} />
+        <ApplyState propsSelf={this.props} applyStateReducer={applyStateReducer} />
         <ApplyProIcon applyStateReducer={applyStateReducer} />
         <div className="flex-item">  
           <ApplyError showDomError={showDomError} />
@@ -86,7 +86,9 @@ class ApplyState extends Component{
     this.btn ={
       title:"去修改",
       handler:()=>{
-        console.warn("傻孩子要去修改")
+        const { Actions, router } = this.props.propsSelf
+        Actions.transLeft();
+        router.push('applyEdit');
       }
     }
   }

@@ -1,0 +1,68 @@
+.apply-edit-from{
+	display: flex;
+  width: 100%;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  .form-item {
+    font-size: 0.32rem;
+    margin-top: 0.28rem;
+    height: 0.32rem;
+    line-height: 0.32rem;
+    padding-left: 0.4rem;
+  }
+  /* 100字 */
+  .form-item-text {
+    position: absolute; bottom: .4rem; right: 0;
+    height: 0.32rem;
+    width: 1.2rem;
+    color: #BABFC9;
+    font-size: .24rem;
+  }
+  .form-text {
+    padding-left: 0.4rem;
+  }
+  .form-input {
+    padding-left: 0.4rem;
+    .am-input-label {
+      font-size: 0.32rem;
+    }
+    .am-input-control input {
+      text-align: right;
+    }
+  }
+  .form-check {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.32rem;
+    padding: 0.28rem 0;
+    div {
+      flex: 1;
+    }
+    .form-check-name {
+      padding-left: 0.4rem;
+    }
+    .form-check-box {
+      text-align: right;
+
+      flex-direction: row;
+      span {
+        flex: 1;
+        margin-right: 0.4rem;
+        padding: 0.1rem 0.3rem;
+        height: 0.32rem;
+        line-height: 0.32rem;
+        color: #949A9F;
+        font-size: 0.28rem;
+        border-radius: 0.4rem;
+        border: 1px solid rgba(0,0,0,0.10);
+      }
+      span.active {
+        background: rgba(255,102,63,0.05);
+        border: 1px solid #FF783F;
+        border-radius: 0.4rem;
+        color: #FF783F;
+      }
+    }
+
+  }
+}
