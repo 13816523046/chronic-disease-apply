@@ -47,4 +47,4 @@ const applyReducer = (state = initialState, action) => {
   }
 };
 
-export default homeReducer;
+export default applyReducer;

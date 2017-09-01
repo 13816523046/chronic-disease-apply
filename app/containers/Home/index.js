@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Connect } from './connect'
 import OstHeader from '../../components/OstHeader'
-import TypeButton from './components/TypeButton'
+import { TypeButton } from './components/TypeButton'
 import './style.less'
 import { Button, Picker, List, TextareaItem, InputItem } from 'antd-mobile'
 

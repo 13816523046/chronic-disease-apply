@@ -1,8 +1,41 @@
 import React, { Component } from 'react'
 import { Connect } from './connect'
 import OstHeader from '../../components/OstHeader'
-import './style.less'
+import OstDrawer from '../OstDrawer'
+import { TagList } from './components/TagList'
+import { ApplyTags } from './components/ApplyTags'
 import { Button, Icon } from 'antd-mobile'
+import './style.less'
+
+
+const tags = [
+  {id: 0, text: 'OMG'},
+  {id: 1, text: 'OMG'},
+  {id: 2, text: 'OMG'},
+  {id: 3, text: 'OMG'},
+  {id: 4, text: 'OMG'},
+  {id: 5, text: 'OMG'},
+  {id: 6, text: 'OMG'},
+]
+const applyTags = [
+  {id: 0, text: 'OMG'},
+  {id: 1, text: 'OMG'},
+  {id: 2, text: 'OMG'},
+  {id: 3, text: 'OMG'},
+  {id: 4, text: 'OMG'},
+  {id: 1, text: 'OMG'},
+  {id: 2, text: 'OMG'},
+  {id: 3, text: 'OMG'},
+  {id: 4, text: 'OMG'},
+  {id: 1, text: 'OMG'},
+  {id: 2, text: 'OMG'},
+  {id: 3, text: 'OMG'},
+  {id: 4, text: 'OMG'},
+  {id: 1, text: 'OMG'},
+  {id: 2, text: 'OMG'},
+  {id: 3, text: 'OMG'},
+  {id: 4, text: 'OMG'},
+]
 
 class Apply extends Component {
 
@@ -22,9 +55,17 @@ class Apply extends Component {
 
   constructor(props) {
     super(props)
+
+    this.deleteTagHandler = this.deleteTagHandler.bind(this)
   }
 
+  deleteTagHandler(e) {
+    console.log(e.target.id);
+  }
+
+
   render() {
+
     const { header, router, Actions } = this.props
     return (
       <div className="main">
@@ -41,17 +82,14 @@ class Apply extends Component {
         <div className="main-content">
           <div className="main-info">
             <div className="col1">已申请病种</div>
-            <div className="col4">
-              <span>乳腺增生</span>
-              <span>肝硬化</span>
-              <span>乳腺增生</span>
-              <span>肝硬化</span>
-              <span>乳腺增生</span>
-              <span>肝硬化</span>
-              <span>乳腺增生</span>
-              <span>肝硬化</span>
-            </div>
-            <div className='i'></div>
+
+            <OstDrawer
+              contentRef={'tags'}
+              visibleHeight={'0.82'}
+              {...this.props}>
+              <ApplyTags tags={applyTags} />
+            </OstDrawer>
+
           </div>
 
           <div className="main-context">
@@ -62,17 +100,7 @@ class Apply extends Component {
               }}>从列表选择<Icon type="right"/>
             </div>
 
-            <div className="tags">
-              <span>乳腺增生<i onClick={() => {
-                console.log('sss');
-              }}>x</i></span>
-              <span>肝硬化<i>x</i></span>
-              <span>乳腺增生<i>x</i></span>
-              <span>肝硬化<i>x</i></span>
-              <span>肝硬化<i>x</i></span>
-              <span>肝硬化<i>x</i></span>
-              <span>肝硬化<i>x</i></span>
-            </div>
+            <TagList tags={tags} handler={this.deleteTagHandler}/>
 
           </div>
 

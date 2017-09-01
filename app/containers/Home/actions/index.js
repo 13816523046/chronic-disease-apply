@@ -43,7 +43,6 @@ export function changeCompany(company) {
     company,
   }
 }
-console.log('request:::', request);
 // action Creator 包含编写所有action同步请求等动作
 // Action 返回一个对象。其中的type属性是必须的，表示 Action 的名称，TYPE唯一
 /*

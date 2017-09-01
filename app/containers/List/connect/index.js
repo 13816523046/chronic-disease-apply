@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as AppActions from '../../App/action'
 
+
 /**
  * 绑定reducerState、actions to Container ‘s
  */
@@ -10,9 +11,9 @@ export const Connect = (Container) => {
 
   // redux ‘s state 非 react state
   function mapStateToProps(state) {
-    const { applyReducer } = state
+    const { listReducer } = state
     return {
-      applyReducer
+      listReducer,
     }
   }
 

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import OstHeader from '../../components/OstHeader'
+import { Connect } from './connect'
 import { Button, Icon } from 'antd-mobile'
 import './style.less'
 
-export default class List extends Component {
+class List extends Component {
 
   static defaultProps = {
     header: {
@@ -21,12 +22,15 @@ export default class List extends Component {
   }
 
   render() {
-    const { header } = this.props
+    const { header, router, Actions } = this.props
     return (
       <div className="main">
         <OstHeader
           title={header.title}
-          back={header.back}
+          back={() => {
+            Actions.transRight()
+            router.push('apply')
+          }}
           option={header.option}
           color={'-white'}>
         </OstHeader>
@@ -64,3 +68,5 @@ export default class List extends Component {
     )
   }
 }
+
+export default Connect(List)

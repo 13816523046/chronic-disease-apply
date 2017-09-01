@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as AppActions from '../../App/action'
+import * as Actions from './action'
 
 /**
  * 绑定reducerState、actions to Container ‘s
  */
-const Actions = Object.assign({}, AppActions)
 export const Connect = (Container) => {
 
   // redux ‘s state 非 react state
   function mapStateToProps(state) {
-    const { applyReducer } = state
+    const { ostDrawerReducer } = state
     return {
-      applyReducer
+      visibleFlag: ostDrawerReducer.visibleFlag,
+      drawerStyle: ostDrawerReducer.styles,
     }
   }
 
