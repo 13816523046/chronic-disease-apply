@@ -1,4 +1,2 @@
 // 开始请求数据列表
-export const START_REQUEST_LISTVIEW = 'START_REQUEST_LISTVIEW'
-// 结束请求数据列表
-export const END_REQUEST_LISTVIEW = 'END_REQUEST_LISTVIEW'
+export const GET_TAG_LIST = 'START_REQUEST_LISTVIEW'

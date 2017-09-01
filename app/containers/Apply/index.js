@@ -96,6 +96,7 @@ class Apply extends Component {
             <div className="title">申请新病种</div>
 
             <div className="select" onClick={()=> {
+              Actions.transLeft()
               router.push('list')
               }}>从列表选择<Icon type="right"/>
             </div>
@@ -107,7 +108,12 @@ class Apply extends Component {
         </div>
 
         <div className="main-btn">
-          <Button onClick={() => { router.push('list')} } className="btn">下一步</Button>
+          <Button onClick={() => {
+            console.log('Request 并 跳转照片页');
+            Actions.transLeft()
+            router.push('photo')
+            // router.push('list')
+          }} className="btn">下一步</Button>
         </div>
       </div>
     )
