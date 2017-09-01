@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   transReducer,
   homeReducer,
   applyStateReducer,
-  requestReducer
+  requestReducer,
   applyReducer,
   ostDrawerReducer,
 })
