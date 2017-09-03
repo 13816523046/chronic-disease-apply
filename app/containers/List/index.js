@@ -19,11 +19,21 @@ class List extends Component {
 
   constructor(props) {
     super(props)
+    this.selectDiseaseHandler = this.selectDiseaseHandler.bind(this)
+  }
+
+  selectDiseaseHandler(currDi) {
+    if (currDi.isApplied) return
+
+    const { Actions, applyReducer } = this.props
+    const { diseases, selectedDi } = applyReducer
+    Actions.setSelectedDiseases(currDi, selectedDi, diseases)
   }
 
   render() {
     console.log(this.props);
-    const { header, router, Actions } = this.props
+    const { header, router, Actions, applyReducer } = this.props
+    const { diseases, selectedDi, selectedNo } = applyReducer
     return (
       <div className="main">
         <OstHeader
@@ -36,30 +46,28 @@ class List extends Component {
           color={'-white'}>
         </OstHeader>
         <div className="main-content">
-          <div className="content-title">已选3项 还可选4项</div>
+          <div className="content-title">已选{selectedNo}项 还可选{7 - selectedNo}项</div>
           <div className="tags content-tags">
-            <span>肝硬化</span>
-            <span>乳腺增生</span>
-            <span>肝硬化</span>
-            <span>肝硬化></span>
-            <span>肝硬化</span>
-            <span>肝硬化</span>
+          {
+            selectedDi.length > 0 && selectedDi.map((s, i) => {
+              return <span key={i}>{s.text}</span>
+            })
+          }
           </div>
           <div className="list">
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span className="disable">冠心病</span></div>
-            <div><span>冠心病</span><i className="blank"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="blank"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="blank"></i></div>
-            <div><span>冠心病</span><i className="blank"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="right"></i></div>
-            <div><span>冠心病</span><i className="blank"></i></div>
+            {
+              diseases.length > 0 && diseases.map((d, i) => {
+                return <div key={i} onClick={this.selectDiseaseHandler.bind(this, d)}>
+                  <span className={d.isApplied ? 'disable' : ''}>
+                    {d.text}
+                  </span>
+                  {
+                    !d.isApplied && <i
+                      className={d.isSelected ? 'right' : 'blank'}></i>
+                  }
+                </div>
+              })
+            }
           </div>
         </div>
         <div className="main-btn">

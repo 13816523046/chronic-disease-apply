@@ -7,36 +7,6 @@ import { ApplyTags } from './components/ApplyTags'
 import { Button, Icon } from 'antd-mobile'
 import './style.less'
 
-
-const tags = [
-  {id: 0, text: 'OMG'},
-  {id: 1, text: 'OMG'},
-  {id: 2, text: 'OMG'},
-  {id: 3, text: 'OMG'},
-  {id: 4, text: 'OMG'},
-  {id: 5, text: 'OMG'},
-  {id: 6, text: 'OMG'},
-]
-const applyTags = [
-  {id: 0, text: 'OMG'},
-  {id: 1, text: 'OMG'},
-  {id: 2, text: 'OMG'},
-  {id: 3, text: 'OMG'},
-  {id: 4, text: 'OMG'},
-  {id: 1, text: 'OMG'},
-  {id: 2, text: 'OMG'},
-  {id: 3, text: 'OMG'},
-  {id: 4, text: 'OMG'},
-  {id: 1, text: 'OMG'},
-  {id: 2, text: 'OMG'},
-  {id: 3, text: 'OMG'},
-  {id: 4, text: 'OMG'},
-  {id: 1, text: 'OMG'},
-  {id: 2, text: 'OMG'},
-  {id: 3, text: 'OMG'},
-  {id: 4, text: 'OMG'},
-]
-
 class Apply extends Component {
 
   static defaultProps = {
@@ -59,14 +29,22 @@ class Apply extends Component {
     this.deleteTagHandler = this.deleteTagHandler.bind(this)
   }
 
+
   deleteTagHandler(e) {
-    console.log(e.target.id);
+    const { Actions, selectedDi, diseases } = this.props
+    Actions.deleteSelectedDisease(e.target.id, selectedDi, diseases)
   }
 
+  componentDidMount() {
+    const { Actions } = this.props
+
+    Actions.getAppliedDisease()
+    Actions.requestDisease()
+  }
 
   render() {
 
-    const { header, router, Actions } = this.props
+    const { header, router, Actions, appliedDi, selectedDi } = this.props
     return (
       <div className="main">
         <OstHeader
@@ -87,7 +65,7 @@ class Apply extends Component {
               contentRef={'tags'}
               visibleHeight={'0.82'}
               {...this.props}>
-              <ApplyTags tags={applyTags} />
+              <ApplyTags tags={appliedDi} />
             </OstDrawer>
 
           </div>
@@ -101,7 +79,7 @@ class Apply extends Component {
               }}>从列表选择<Icon type="right"/>
             </div>
 
-            <TagList tags={tags} handler={this.deleteTagHandler}/>
+            <TagList tags={selectedDi} handler={this.deleteTagHandler}/>
 
           </div>
 
