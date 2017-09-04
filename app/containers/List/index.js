@@ -71,7 +71,10 @@ class List extends Component {
           </div>
         </div>
         <div className="main-btn">
-          <Button onClick={() => {} } className="btn">完成</Button>
+          <Button onClick={() => {
+            Actions.transRight()
+            router.push('apply')
+          }} className="btn">完成</Button>
         </div>
       </div>
     )

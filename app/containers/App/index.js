@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './style.less'
 import '../../css/common.less'
- 
+
 class App extends Component {
 
   constructor(props) {
@@ -27,6 +27,7 @@ class App extends Component {
 
         <div
           key={this.props.location.pathname}
+          className={'ost-wrapper'}
           style={{height:"100%", width: "100%"}}>
           {this.props.children}
         </div>
